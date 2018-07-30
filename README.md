@@ -1,5 +1,5 @@
 # Static-HTML-Generator
-This project was created to simplify work with assignments in a basic web development course where server-side rendering, and thus code sharing, was not an option.
+This project was created to simplify work with assignments in a basic web development course where server-side rendering, and thus code sharing using partials/layouts, was not an option.
 
 The purpose is to help avoding repetition of code that is shared between several pages, e.g. hedaer, navigation and footer, while still generating static html-pages that will pass the course requirements.
 
