@@ -1,7 +1,7 @@
 # Static-HTML-Generator
-This project was created to simplify work with assignments in a basic web development course where server-side rendering, and thus code sharing, was not an option.
+This project was created to simplify work with assignments in a basic web development course where server-side rendering, and thus code sharing using partials/layouts, was not an option.
 
-The purpose is to help avoding repetition of code that is shared between several pages, e.g. hedaer, navigation and footer, while still generating static html-pages that will pass the course requirements.
+The purpose is to avoid repetition of code that is shared between several pages, e.g. header, navigation and footer, while still generating static html-pages that will pass the course requirements.
 
 # How to use
 
@@ -38,9 +38,9 @@ That's it. Just make sure you update the layout- and pages-files, and not the ge
 
 * The `html`-folder need to be created manually before the first run. This will be fixed soon.
 
-* The syntaxen is inspired by Laravel Blade, but feel free to suggest other conventions/directive-naming.
+* The syntax is inspired by Laravel Blade, but feel free to suggest other conventions/directive-naming.
 
-* I have not written any tests yet and I will avoid larger refactoring until these are in place (feel fre to PR!)
+* I have not written any tests yet and I will avoid larger refactoring until these are in place (feel free to PR!)
 
 * This a very early version and the API is likely to change.
 
