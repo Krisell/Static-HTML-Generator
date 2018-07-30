@@ -5,7 +5,7 @@ The purpose is to avoid repetition of code that is shared between several pages,
 
 # How to use
 
-1. Add [`generator.js`](https://raw.githubusercontent.com/Krisell/Static-HTML-Generator/master/dist/generator.js) in the `dist` directory to your project root directory.
+1. Add [`generator.js`](https://raw.githubusercontent.com/Krisell/Static-HTML-Generator/master/dist/generator.js) to your project root directory.
 
 2. Create a directory `layouts` and create an html-file (e.g. master.html) that will work as the template for all pages. Since the content of this file is part of the assignment, I will not show a complete example here, but all you need is a complete standard HTML-file, and where content differs on different pages, use a yield-directive with `@yield(name)`.
 For instance `@yield(title)` in the title-tag, and `@yield(content)` after navigation.
