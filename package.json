@@ -1,0 +1,27 @@
+{
+  "name": "Generator",
+  "version": "0.3.0",
+  "description": "This project was created to simplify work with assignments in a basic web development course where server-side rendering, and thus code sharing, was not an option.",
+  "main": "generator.js",
+  "scripts": {
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krisell/Static-HTML-Generator.git"
+  },
+  "keywords": [],
+  "author": "Martin Krisell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Krisell/Static-HTML-Generator/issues"
+  },
+  "homepage": "https://github.com/Krisell/Static-HTML-Generator#readme",
+  "devDependencies": {
+    "laravel-mix": "^2.1.11",
+    "cross-env": "^5.2.0"
+  }
+}

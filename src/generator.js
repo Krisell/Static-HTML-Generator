@@ -19,13 +19,13 @@ getAllPages().forEach(file => {
     layout = setActivePage(file, layout)
 
     // Find all yields, and read corresonding sections from pages
-    let yields = layout.match(/@yield\((.*)\)/g)
-        .map(yield => yield.match(/@yield\((.*)\)/)[1])
+    let sections = layout.match(/@yield\((.*)\)/g)
+        .map(section => section.match(/@yield\((.*)\)/)[1])
 
      // For each yield, find the page content and insert it
-    yields.forEach(yield => {
-        let regExp = new RegExp(`@section\\(${yield}\\)([\\s\\S]+?)@endsection`)
-        layout = layout.replace(`@yield(${yield})`, page.match(regExp)[1].trim())
+    sections.forEach(section => {
+        let regExp = new RegExp(`@section\\(${section}\\)([\\s\\S]+?)@endsection`)
+        layout = layout.replace(`@yield(${section})`, page.match(regExp)[1].trim())
     })
 
     layout = resolveLinks(file, layout)
