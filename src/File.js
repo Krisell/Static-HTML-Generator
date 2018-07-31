@@ -14,6 +14,12 @@ class File
     read (path) {
         return fs.readFileSync(path, 'utf8')
     }
+
+    prepareOutputDirectory (folder) {
+        if (!fs.existsSync(folder)){
+            fs.mkdirSync(folder);
+        }
+    }
 }
 
 module.exports = File

@@ -30,6 +30,7 @@ const StaticGenerator = {
             layout = URLResolver.css(file, layout)
             layout = URLResolver.js(file, layout)
 
+            fileHandler.prepareOutputDirectory('html')
             saveFile(file, layout)
         })
 

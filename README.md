@@ -33,15 +33,9 @@ That's it. Just make sure you update the layout- and pages-files, and not the ge
 
 
 # A few ceveats
-
 * `node generator.js` must be run after each change to a layout- or pages-file. This should be solved with a simple watcher.
-
-* The `html`-folder need to be created manually before the first run. This will be fixed soon.
-
 * The syntax is inspired by Laravel Blade, but feel free to suggest other conventions/directive-naming.
-
-* I have not written any tests yet and I will avoid larger refactoring until these are in place (feel free to PR!)
-
+* I have only written a few unit tests yet and I will avoid larger refactoring until feature tests are in place (feel free to PR!)
 * This a very early version and the API is likely to change.
 
 
