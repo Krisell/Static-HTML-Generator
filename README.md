@@ -45,5 +45,13 @@ That's it. Just make sure you update the layout- and pages-files, and not the ge
 * This a very early version and the API is likely to change.
 
 
+# How to build
+If you would like to modify the code, this is the build process:
+1. Clone the repository
+2. Install npm dev-dependencies using `npm install` from the project folder.
+3. Run tests with `npm test`
+4. Build with `npm run development` or `npm run production`. This generates the `dist/generator.js`-file that may be used in an HTML-project (i.e. the course assignment).
+
+
 # Contributions
 This is mostly a toy-project to help me with this specific course-assignment, but it's now also a great way to play around with GitHub. Please feel free to use this repo in the same way, i.e. you're welcome to create PRs, Issues etc. even if you're unsure if you've done it "correctly".
