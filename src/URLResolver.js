@@ -4,6 +4,8 @@ const URLResolver = {
      * in the root directory, and all other html-files in the
      * html-folder.
      */
+    resolvers: ['links', 'css', 'js', 'jpg', 'png'],
+
     links (file, layout) {
         let links = matchAll(layout, 'link')
 

@@ -43,11 +43,9 @@ const StaticGenerator = {
                 layout = layout.replace(`@yield(${section})`, page.match(regExp)[1].trim())
             })
 
-            layout = URLResolver.links(file, layout)
-            layout = URLResolver.css(file, layout)
-            layout = URLResolver.js(file, layout)
-            layout = URLResolver.jpg(file, layout)
-            layout = URLResolver.png(file, layout)
+            URLResolver.resolvers.forEach(resolver => {
+                layout = URLResolver[resolver](file, layout)
+            })
 
             fileHandler.prepareOutputDirectory('html')
             saveFile(file, layout)
