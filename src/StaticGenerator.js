@@ -29,6 +29,8 @@ const StaticGenerator = {
             layout = URLResolver.links(file, layout)
             layout = URLResolver.css(file, layout)
             layout = URLResolver.js(file, layout)
+            layout = URLResolver.jpg(file, layout)
+            layout = URLResolver.png(file, layout)
 
             fileHandler.prepareOutputDirectory('html')
             saveFile(file, layout)

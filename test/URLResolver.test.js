@@ -30,6 +30,22 @@ test('JS URLs are generated correctly', () => {
     expect(URLResolver.js('adam.html', input)).toBe(otherOutput)
 })
 
+test('JPG-image URLs are generated correctly', () => {
+    let input = `<img src="@jpg(image)"></img>`
 
-    // <link rel="stylesheet" href="@css(style)">
-    // <script src="@js(index)"></script>
+    let indexOutput = `<img src="images/image.jpg"></img>`
+    let otherOutput = `<img src="../images/image.jpg"></img>`
+
+    expect(URLResolver.jpg('index.html', input)).toBe(indexOutput)
+    expect(URLResolver.jpg('adam.html', input)).toBe(otherOutput)
+})
+
+test('PNG-image URLs are generated correctly', () => {
+    let input = `<img src="@png(image)"></img>`
+
+    let indexOutput = `<img src="images/image.png"></img>`
+    let otherOutput = `<img src="../images/image.png"></img>`
+
+    expect(URLResolver.png('index.html', input)).toBe(indexOutput)
+    expect(URLResolver.png('adam.html', input)).toBe(otherOutput)
+})
