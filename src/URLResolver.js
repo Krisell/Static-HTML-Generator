@@ -28,16 +28,10 @@ const URLResolver = {
      * html-folder.
      */
     css (file, layout) {
-        let links = matchAll(layout, 'css')
-
-        links.forEach(link => {
-            link = match(link, 'css')
-            let regexp = new RegExp(`@css\\(${link}\\)`)
-
-            layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `styles/${link}.css` : `../styles/${link}.css`)
+        return URLResolver.baseResolver(file, layout, {
+            type: 'css',
+            directory: 'styles',
         })
-
-        return layout
     },
 
     /**
@@ -46,40 +40,32 @@ const URLResolver = {
      * html-folder.
      */
     js (file, layout) {
-        let links = matchAll(layout, 'js')
-
-        links.forEach(link => {
-            link = match(link, 'js')
-            let regexp = new RegExp(`@js\\(${link}\\)`)
-
-            layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `js/${link}.js` : `../js/${link}.js`)
+        return URLResolver.baseResolver(file, layout, {
+            type: 'js',
+            directory: 'js',
         })
-
-        return layout
-    }, 
+    },
 
     /*Assuming all images is stored in the 'images'-directory specified in the first assignment.*/
     jpg (file, layout) {
-        let links = matchAll(layout, 'jpg')
-
-        links.forEach(link => {
-            link = match(link, 'jpg')
-            let regexp = new RegExp(`@jpg\\(${link}\\)`)
-
-            layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `images/${link}.jpg` : `../images/${link}.jpg`)
+        return URLResolver.baseResolver(file, layout, {
+            type: 'jpg',
+            directory: 'images',
         })
-
-        return layout
-    }, 
+    },
 
     png (file, layout) {
-        let links = matchAll(layout, 'png')
+        return URLResolver.baseResolver(file, layout, {
+            type: 'png',
+            directory: 'images',
+        })
+    },
 
-        links.forEach(link => {
-            link = match(link, 'png')
-            let regexp = new RegExp(`@png\\(${link}\\)`)
-
-            layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `images/${link}.png` : `../images/${link}.png`)
+    baseResolver (file, layout, { type, directory }) {
+        matchAll(layout, type).forEach(link => {
+            link = match(link, type)
+            let regexp = new RegExp(`@${type}\\(${link}\\)`)
+            layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `${directory}/${link}.${type}` : `../${directory}/${link}.${type}`)
         })
 
         return layout
