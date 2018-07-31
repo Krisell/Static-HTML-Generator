@@ -28,7 +28,6 @@ For example:
 For example: `<li><a class="active:index" href="@link(index)">Start</a></li>`
 
 6. Run `node generator.js`to generate the static html-files. All files found in `pages/` will be generated and put in the html-directory, exceot for index.html which will be placed in the root folder (but index.html should still be put in pages/).
-
 If you add the `--watch`-flag, i.e. `node generator.js --watch`, the program will keep running and re-build whenever a file changes.
 
 That's it. Just make sure you update the layout- and pages-files, and not the generated files, and you will save lots of time and avoid problems with broken links and different pages showing different versions of the navigation.
