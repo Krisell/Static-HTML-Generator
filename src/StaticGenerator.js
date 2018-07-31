@@ -1,4 +1,6 @@
+const URLResolver = require('./URLResolver')
 const File = require('./File')
+
 const fileHandler = new File()
 
 const StaticGenerator = {
@@ -15,7 +17,7 @@ const StaticGenerator = {
             layout = setActivePage(file, layout)
 
             // Find all yields, and read corresonding sections from pages
-            let sections = layout.match(/@yield\((.*)\)/g)
+            let sections = (layout.match(/@yield\((.*)\)/g) || [])
                 .map(section => section.match(/@yield\((.*)\)/)[1])
 
              // For each yield, find the page content and insert it
@@ -24,9 +26,9 @@ const StaticGenerator = {
                 layout = layout.replace(`@yield(${section})`, page.match(regExp)[1].trim())
             })
 
-            layout = resolveLinks(file, layout)
-            layout = resolveCss(file, layout)
-            layout = resolveJs(file, layout)
+            layout = URLResolver.links(file, layout)
+            layout = URLResolver.css(file, layout)
+            layout = URLResolver.js(file, layout)
 
             saveFile(file, layout)
         })
@@ -61,65 +63,6 @@ const StaticGenerator = {
             let path = (file === 'index.html') ? '.' : 'html'
 
             fileHandler.save(`${path}/${file}`, layout)
-        }
-
-        /**
-         * Resolves relative links, assuming that index.html is placed
-         * in the root directory, and all other html-files in the
-         * html-folder.
-         */
-        function resolveLinks (file, layout) {
-            let links = layout.match(/@link\((.*?)\)/g)
-
-            links.forEach(link => {
-                link = link.match(/@link\((.*?)\)/)[1]
-                let regexp = new RegExp(`@link\\(${link}\\)`)
-
-                if (file.split('.')[0] === 'index') {
-                    layout = layout.replace(regexp, link === 'index' ? 'index.html' : `html/${link}.html`)
-                    return
-                }
-
-                layout = layout.replace(regexp, link === 'index' ? '../index.html' : `${link}.html`)
-            })
-
-            return layout
-        }
-
-        /**
-         * Resolves css links, assuming that index.html is placed
-         * in the root directory, and all other html-files in the
-         * html-folder.
-         */
-        function resolveCss (file, layout) {
-            let links = layout.match(/@css\((.*?)\)/g)
-
-            links.forEach(link => {
-                link = link.match(/@css\((.*?)\)/)[1]
-                let regexp = new RegExp(`@css\\(${link}\\)`)
-
-                layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `styles/${link}.css` : `../styles/${link}.css`)
-            })
-
-            return layout
-        }
-
-        /**
-         * Resolves js-links, assuming that index.html is placed
-         * in the root directory, and all other html-files in the
-         * html-folder.
-         */
-        function resolveJs (file, layout) {
-            let links = layout.match(/@js\((.*?)\)/g)
-
-            links.forEach(link => {
-                link = link.match(/@js\((.*?)\)/)[1]
-                let regexp = new RegExp(`@js\\(${link}\\)`)
-
-                layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `js/${link}.js` : `../js/${link}.js`)
-            })
-
-            return layout
         }
     }
 }
