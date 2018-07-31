@@ -4,7 +4,24 @@ const File = require('./File')
 const fileHandler = new File()
 
 const StaticGenerator = {
-    generate() {
+    generate(options = {}) {
+        StaticGenerator.process()
+
+        if (options.watch) {
+            console.log('\x1b[36m%s\x1b[0m', "Watching pages and layouts directories for changes")
+
+            let handler = () => {
+                console.log('\x1b[36m%s\x1b[0m', "Detected change, processing files.")
+                StaticGenerator.process()
+                console.log('\x1b[36m%s\x1b[0m', "Process complete, watching again.")
+            }
+
+            fileHandler.watch('pages', handler)
+            fileHandler.watch('layouts', handler)
+        }
+    },
+
+    process () {
         fileHandler.index('pages').forEach(file => {
             let page = fileHandler.read(`./pages/${file}`)
             let layout = fetchLayout(page)
