@@ -5,7 +5,7 @@ The purpose is to avoid repetition of code that is shared between several pages,
 
 # How to use
 
-1. Add [`generator.js`](https://raw.githubusercontent.com/Krisell/Static-HTML-Generator/master/dist/generator.js) in the `dist` directory to your project root directory.
+1. Add [`generator.js`](https://raw.githubusercontent.com/Krisell/Static-HTML-Generator/master/dist/generator.js) to your project root directory.
 
 2. Create a directory `layouts` and create an html-file (e.g. master.html) that will work as the template for all pages. Since the content of this file is part of the assignment, I will not show a complete example here, but all you need is a complete standard HTML-file, and where content differs on different pages, use a yield-directive with `@yield(name)`.
 For instance `@yield(title)` in the title-tag, and `@yield(content)` after navigation.
@@ -43,6 +43,14 @@ That's it. Just make sure you update the layout- and pages-files, and not the ge
 * I have not written any tests yet and I will avoid larger refactoring until these are in place (feel free to PR!)
 
 * This a very early version and the API is likely to change.
+
+
+# How to build
+If you would like to modify the code, this is the build process:
+1. Clone the repository
+2. Install npm dev-dependencies using `npm install` from the project folder.
+3. Run tests with `npm test`
+4. Build with `npm run development` or `npm run production`. This generates the `dist/generator.js`-file that may be used in an HTML-project (i.e. the course assignment).
 
 
 # Contributions
