@@ -28,12 +28,12 @@ For example:
 For example: `<li><a class="active:index" href="@link(index)">Start</a></li>`
 
 6. Run `node generator.js`to generate the static html-files. All files found in `pages/` will be generated and put in the html-directory, exceot for index.html which will be placed in the root folder (but index.html should still be put in pages/).
+If you add the `--watch`-flag, i.e. `node generator.js --watch`, the program will keep running and re-build whenever a file changes.
 
 That's it. Just make sure you update the layout- and pages-files, and not the generated files, and you will save lots of time and avoid problems with broken links and different pages showing different versions of the navigation.
 
 
-# A few ceveats
-* `node generator.js` must be run after each change to a layout- or pages-file. This should be solved with a simple watcher.
+# A few notes
 * The syntax is inspired by Laravel Blade, but feel free to suggest other conventions/directive-naming.
 * I have only written a few unit tests yet and I will avoid larger refactoring until feature tests are in place (feel free to PR!)
 * This a very early version and the API is likely to change.
