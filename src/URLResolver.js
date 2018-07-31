@@ -56,6 +56,33 @@ const URLResolver = {
         })
 
         return layout
+    }, 
+
+    /*Assuming all images is stored in the 'images'-directory specified in the first assignment.*/
+    jpg (file, layout) {
+        let links = matchAll(layout, 'jpg')
+
+        links.forEach(link => {
+            link = match(link, 'jpg')
+            let regexp = new RegExp(`@jpg\\(${link}\\)`)
+
+            layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `images/${link}.jpg` : `../images/${link}.jpg`)
+        })
+
+        return layout
+    }, 
+
+    png (file, layout) {
+        let links = matchAll(layout, 'png')
+
+        links.forEach(link => {
+            link = match(link, 'png')
+            let regexp = new RegExp(`@png\\(${link}\\)`)
+
+            layout = layout.replace(regexp, file.split('.')[0] === 'index' ? `images/${link}.png` : `../images/${link}.png`)
+        })
+
+        return layout
     }
 }
 
