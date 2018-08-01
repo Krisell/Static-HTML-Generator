@@ -27,7 +27,7 @@ For example:
 5. The `active:name` directive will be rewritten to `active` if the current file corresponds to `name`(without .html) and the empty string otherwise. This can be useful to add an active-class to the current page in the navigation.
 For example: `<li><a class="active:index" href="@link(index)">Start</a></li>`
 
-6. Run `node generator.js`to generate the static html-files. All files found in `pages/` will be generated and put in the html-directory, exceot for index.html which will be placed in the root folder (but index.html should still be put in pages/).
+6. Run `node generator.js`to generate the static html-files. All files found in `pages/` will be generated and put in the html-directory, except for index.html which will be placed in the root folder (but index.html should still be put in pages/).
 If you add the `--watch`-flag, i.e. `node generator.js --watch`, the program will keep running and re-build whenever a file changes.
 
 That's it. Just make sure you update the layout- and pages-files, and not the generated files, and you will save lots of time and avoid problems with broken links and different pages showing different versions of the navigation.
@@ -43,8 +43,8 @@ That's it. Just make sure you update the layout- and pages-files, and not the ge
 If you would like to modify the code, this is the build process:
 1. Clone the repository
 2. Install npm dev-dependencies using `npm install` from the project folder.
-3. Run tests with `npm test`
-4. Build with `npm run development` or `npm run production`. This generates the `dist/generator.js`-file that may be used in an HTML-project (i.e. the course assignment).
+3. Optional: Run tests with `npm test`
+4. Build with `npm run development` or `npm run production` (which also minifies the code). This generates the `dist/generator.js`-file that may be used in an HTML-project (i.e. the course assignment).
 
 
 # Contributions
